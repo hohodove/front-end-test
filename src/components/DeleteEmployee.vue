@@ -1,8 +1,8 @@
 <template>
-  <div class="select-employee">
+  <div class="delete-employee">
     <input type="text" v-model="id" />
-    <button @click="selectEmployeeApi">検索</button>
-    <p v-show="isActive">{{ employee.id }}, {{ employee.name }}</p>
+    <button @click="deleteEmployeeApi">削除</button>
+    <p v-show="isActive">{{ delete_number }}件削除</p>
   </div>
 </template>
 
@@ -10,21 +10,21 @@
 import axios from "axios";
 
 export default {
-  name: "SelectEmployee",
+  name: "DeleteEmployee",
   data() {
     return {
       id: "1",
-      employee: {},
+      delete_number: {},
       isActive: false,
     };
   },
   methods: {
-    selectEmployeeApi() {
+    deleteEmployeeApi() {
       const url = "http://localhost:8081/employee/" + this.id;
       axios
-        .get(url)
+        .delete(url)
         .then((res) => {
-          this.employee = res.data;
+          this.delete_number = res.data;
           this.isActive = true;
         })
         .catch((error) => {
@@ -36,8 +36,8 @@ export default {
 </script>
 
 <style scoped>
-.select-employee {
-  margin: 0 0 50px;
+.delete-employee {
+  margin: 50px;
   text-align: center;
 }
 

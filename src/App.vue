@@ -4,7 +4,7 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/article">Article</router-link> |
     <router-link to="/greet">Greet</router-link> |
-    <router-link to="/search-employee">従業員検索</router-link>
+    <router-link to="/employee">従業員</router-link>
   </div>
   <router-view />
 </template>
