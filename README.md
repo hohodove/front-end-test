@@ -1,5 +1,7 @@
 # vuetest001
 
+#業務にてVue.jsを導入するための技術検証用。
+
 ## Project setup
 ```
 npm install
