@@ -35,11 +35,17 @@ export default {
     insertEmployeeApi() {
       const url = "http://localhost:8081/employee/";
       axios
-        .post(url, {
-          id: this.id,
-          name: this.name,
-          pass: this.pass,
-        })
+        .post(
+          url,
+          {
+            id: this.id,
+            name: this.name,
+            pass: this.pass,
+          },
+          {
+            withCredentials: true,
+          }
+        )
         .then((res) => {
           this.employee = res.data;
           this.message = "登録成功";

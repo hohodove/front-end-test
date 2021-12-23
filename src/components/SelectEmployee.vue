@@ -22,7 +22,7 @@ export default {
     selectEmployeeApi() {
       const url = "http://localhost:8081/employee/" + this.id;
       axios
-        .get(url)
+        .get(url, { withCredentials: true })
         .then((res) => {
           this.employee = res.data;
           this.isActive = true;
