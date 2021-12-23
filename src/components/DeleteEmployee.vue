@@ -22,7 +22,7 @@ export default {
     deleteEmployeeApi() {
       const url = "http://localhost:8081/employee/" + this.id;
       axios
-        .delete(url)
+        .delete(url, { withCredentials: true })
         .then((res) => {
           this.delete_number = res.data;
           this.isActive = true;

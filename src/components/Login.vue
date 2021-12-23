@@ -1,5 +1,5 @@
 <template>
-  <div class="update-employee">
+  <div class="login">
     <div>
       <label for="id">ID:</label>
       <input type="text" id="id" v-model="id" />
@@ -21,26 +21,24 @@
 import axios from "axios";
 
 export default {
-  name: "UpdateEmployee",
+  name: "Login",
   data() {
     return {
-      id: "1",
-      name: "",
-      pass: "",
+      username: "",
+      password: "",
       isActive: false,
       message: {},
     };
   },
   methods: {
     updateEmployeeApi() {
-      const url = "http://localhost:8081/employee/" + this.id;
+      const url = "http://localhost:8081/api/login";
       axios
         .put(
           url,
           {
-            id: this.id,
-            name: this.name,
-            pass: this.pass,
+            username: this.username,
+            password: this.password,
           },
           {
             withCredentials: true,
@@ -48,7 +46,6 @@ export default {
         )
         .then((res) => {
           this.employee = res.data;
-          this.message = "更新成功";
           this.isActive = true;
         })
         .catch((error) => {
@@ -67,12 +64,12 @@ input {
   width: 50px;
   text-align: center;
 }
-.update-employee {
+.login {
   display: inline-block;
   text-align: center;
 }
 
-.update-employee div {
+.login div {
   text-align: left;
 }
 

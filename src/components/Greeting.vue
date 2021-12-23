@@ -19,7 +19,7 @@ export default {
   methods: {
     greet() {
       axios
-        .get("http://localhost:8081/greeting")
+        .get("http://localhost:8081/greeting", { withCredentials: true })
         .then((res) => {
           this.greetdata = res.data;
         })

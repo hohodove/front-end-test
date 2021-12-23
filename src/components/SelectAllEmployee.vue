@@ -27,7 +27,7 @@ export default {
     refreshEmployees: function () {
       const url = "http://localhost:8081/employee/";
       axios
-        .get(url)
+        .get(url, { withCredentials: true })
         .then((res) => {
           this.employees = res.data;
         })
