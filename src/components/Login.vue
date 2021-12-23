@@ -1,18 +1,14 @@
 <template>
   <div class="login">
     <div>
-      <label for="id">ID:</label>
-      <input type="text" id="id" v-model="id" />
+      <label for="name">USERNAME:</label>
+      <input type="text" id="username" v-model="username" />
     </div>
     <div>
-      <label for="name">NAME:</label>
-      <input type="text" id="name" v-model="name" />
+      <label for="pass">PASSWORD:</label>
+      <input type="text" id="password" v-model="password" />
     </div>
-    <div>
-      <label for="pass">PASS:</label>
-      <input type="text" id="pass" v-model="pass" />
-    </div>
-    <button @click="updateEmployeeApi">更新</button>
+    <button @click="loginRequest">ログイン</button>
     <p v-show="isActive">{{ message }}</p>
   </div>
 </template>
@@ -31,10 +27,10 @@ export default {
     };
   },
   methods: {
-    updateEmployeeApi() {
-      const url = "http://localhost:8081/api/login";
+    loginRequest() {
+      const url = "http://localhost:8081/login";
       axios
-        .put(
+        .post(
           url,
           {
             username: this.username,
@@ -45,11 +41,12 @@ export default {
           }
         )
         .then((res) => {
+          this.message = "ログイン成功";
           this.employee = res.data;
           this.isActive = true;
         })
         .catch((error) => {
-          this.message = "更新失敗";
+          this.message = "ログイン失敗";
           this.isActive = true;
           console.log(error);
         });
@@ -61,7 +58,7 @@ export default {
 <style scoped>
 input {
   margin: 3px;
-  width: 50px;
+  width: 70px;
   text-align: center;
 }
 .login {
