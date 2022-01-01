@@ -1,14 +1,15 @@
 <template>
-  <div class="login-view">
+  <div class="login">
     <Login />
   </div>
 </template>
 
 <script>
-import Login from "@/componets/Login.vue";
+// @ is an alias to /src
+import Login from "@/components/Login.vue";
 
 export default {
-  name: "Login",
+  name: "LoginPage",
   components: {
     Login,
   },
