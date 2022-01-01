@@ -29,17 +29,11 @@ export default {
   methods: {
     loginRequest() {
       const url = "http://localhost:8081/login";
+      const param = new FormData();
+      param.append("username", this.username);
+      param.append("password", this.password);
       axios
-        .post(
-          url,
-          {
-            username: this.username,
-            password: this.password,
-          },
-          {
-            withCredentials: true,
-          }
-        )
+        .post(url, param, { withCredentials: true })
         .then((res) => {
           this.message = "ログイン成功";
           this.employee = res.data;
